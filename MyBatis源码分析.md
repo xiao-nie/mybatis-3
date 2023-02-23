@@ -140,6 +140,41 @@ SqlSession.insert();
 SqlSession.selectOne();
 ...
 
+底层：
+	SqlSession.insert();
+	SqlSession.update();
+    SqlSession.delete();
+应用层面：
+	UserDAO userDAO = SqlSession.getMapper(UserDao.class);
+	// UserDAO接口的实现类的对象
+	// 疑问？UserDAO接口实现类 在哪里？
+	// 动态字节码技术 ---> 类 在 JVM 运行时创建  JVM 运行结束后，消失了
+		1. 如何 创 UserDAO xxxDAO接口的实现类
+			代理 （动态代理）
+            a. 为原始对象(目标)增加【额外功能】
+            b. 远程代理 (RPC) Dubbo
+            c. 接口实现类，我们看不到实实在在的类文件，但是运行时却能体现出来。
+               无中生有
+			
+		2. 实现类 如何进行实现的
+			interface UserDAO{
+				List<User> queryAllUsers();
+			}
+			UserDAOImpl implements UserDAO{
+				queryAllUsers(){
+					sqlSession.select("namespace.id", 参数)
+						|- Excutor
+							|- StatementHandler
+								|- ParamenterHandler,ResultSetHandler
+									TypeHandler
+				}
+				save(){
+					sqlSession.insert("namespace.id", 参数);
+				}
+			}
+	userDAO.queryUserById();
+	userDAO.queryUsers();
+			
 ```
 
 
