@@ -125,7 +125,7 @@
 
 ![image-20221129211117171](MyBatis源码分析.assets/image-20221129211117171.png)
 
-
+![image-20230302224221071](C:\Users\50200\AppData\Roaming\Typora\typora-user-images\image-20230302224221071.png)
 
 ### 2. MyBatis的核心对象如何与SqlSession建立联系？
 
