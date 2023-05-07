@@ -16,6 +16,7 @@ public class Test01 {
 
         InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+
         SqlSession sqlSession = sqlSessionFactory.openSession();
         List<User> list = sqlSession.selectList("com.javae.dao.UserDao.queryAll");
         User user = sqlSession.selectOne("com.javae.dao.UserDao.getById");
