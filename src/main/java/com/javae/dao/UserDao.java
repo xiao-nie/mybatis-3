@@ -11,4 +11,6 @@ public interface UserDao {
 
     User getById(@Param("id") Integer id);
 
+    int updateAgeById(@Param("id") Integer id, @Param("age") Integer age);
+
 }

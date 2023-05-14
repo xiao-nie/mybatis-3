@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.javae.dao.UserDao">
+<!--    <cache type="com.javae.cache.RedisCache"/>-->
     <cache/>
+
+    <update id="updateAgeById">
+        update sm_user set age = #{age} where id = #{id}
+    </update>
     <select id="queryAll" resultType="com.javae.pojo.User">
         select * from sm_user
     </select>
